@@ -32,6 +32,10 @@ class ES_Data:
             ],
             timeout=100
         )
+        if self.es.ping():
+            print('Connected!')
+        else:
+            print('Connection Failed')
 
     def search(self):
         es_query = {
@@ -53,6 +57,45 @@ class ES_Data:
         return result
 
         return es_result
+
+    def create_index(self, index_name='matieres'):
+        created = False
+        # index settings
+        settings = {
+            "settings": {
+                "number_of_shards": 1,
+                "number_of_replicas": 0
+            },
+            "mappings": {
+                "members": {
+                    "dynamic": "strict",
+                    "properties": {
+                        "title": {
+                            "type": "text"
+                        },
+                        "submitter": {
+                            "type": "text"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "calories": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+        try:
+            if not self.es.indices.exists(index_name):
+                # Ignore 400 means to ignore "Index Already Exist" error.
+                self.es.indices.create(index=index_name, ignore=400, body=settings)
+                print('Created Index')
+            created = True
+        except Exception as ex:
+            print(str(ex))
+        finally:
+            return created
 
 
 if __name__ == "__main__":
