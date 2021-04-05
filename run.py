@@ -58,7 +58,7 @@ class ES_Data:
 
         return es_result
 
-    def create_index(self, index_name='matieres'):
+    def create_index(self, index_name='ESproject'):
         created = False
         # index settings
         settings = {
@@ -67,20 +67,46 @@ class ES_Data:
                 "number_of_replicas": 0
             },
             "mappings": {
-                "members": {
-                    "dynamic": "strict",
+                "subjects": {
+                    "dynamic": "true",
                     "properties": {
-                        "title": {
+                        "name": {
                             "type": "text"
                         },
-                        "submitter": {
-                            "type": "text"
+                        "category": {
+                            "type": "keyword"
+                        },
+                        "number_hours": {
+                            "type": "integer"
+                        },
+                        "start_date": {
+                            "type": "date",
+                            "format": "dd-MM-yyyy"
+                        },
+                        "end_date": {
+                            "type": "date",
+                            "format": "dd-MM-yyyy"
                         },
                         "description": {
-                            "type": "text"
+                            "type": "text",
+                            "ignore_above": 500
                         },
-                        "calories": {
-                            "type": "integer"
+                        "coef": {
+                            "type": "byte"
+                        },
+                        "professor": {
+                            "properties": {
+                                "title": {
+                                    "type": "text",
+                                    "fields": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "name": {
+                                    "first": {"type": "text"},
+                                    "last": {"type": "text"}
+                                }
+                            }
                         }
                     }
                 }
