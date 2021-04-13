@@ -1,0 +1,165 @@
+{#<html>#}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Search Form</title>
+
+</head>
+{% extends "base.html" %}
+{% block content %}
+<body id="main_body" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form/view.css') }}" media="all">
+    <script type="text/javascript" src="{{ url_for('static', filename='form/view.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='form/calendar.js') }}"></script>
+
+	<img id="top" src="{{ url_for('static', filename='form/top.png') }}" alt="">
+	<div id="form_container">
+		<form id="form_21717" class="appnitro"  method="post" action="{{ url_for('load') }}">
+        <div class="form_description">
+            <h2>Search Form</h2>
+			<p>This is your search form using Elastic Search. Please fill in the desired parameters.</p>
+		</div>
+
+
+        <ul >
+
+        <li id="li_1" >
+            <label class="description" for="keyword">Keyword </label>
+            <div>
+                <input id="keyword" name="keyword" class="element text large" type="text" maxlength="255" value=""/>
+            </div><p class="guidelines" id="guide_1">
+                        <small>Keyword to search such as subject name,
+                        professor name or subject description</small></p>
+		</li>
+
+
+
+        <li id="li_5" >
+            <label class="description" for="category">Category </label>
+            <div>
+                <p class="guidelines" id="guide_1">
+                        <small>Category of subject</small></p>
+            <select class="element select medium" id="category" name="category">
+                <option value="" selected="selected"></option>
+                <option value="iabd" >A.I & Big Data</option>
+                <option value="maths" >Maths</option>
+                <option value="dev" >Development & Programmation</option>
+
+            </select>
+            </div>
+		</li>
+
+
+
+        <li id="li_6" >
+		<label class="description" for="coef">Coefficient </label>
+		<span>
+			<input id="coef_1" name="coef_1" class="element checkbox" type="checkbox" value="1" />
+            <label class="choice" for="coef_1">1</label>
+            <input id="coef_2" name="coef_2" class="element checkbox" type="checkbox" value="2" />
+            <label class="choice" for="coef_2">2</label>
+            <input id="coef_3" name="coef_3" class="element checkbox" type="checkbox" value="3" />
+            <label class="choice" for="coef_3">3</label>
+            <input id="coef_4" name="coef_4" class="element checkbox" type="checkbox" value="0" />
+            <label class="choice" for="coef_4">N.C</label>
+
+		</span> 
+		</li>
+
+
+
+        <li id="li_2" >
+            <label class="description" for="start_date">Start Date of Course</label>
+            <span>
+                <input id="start_date_day" name="start_date_day" class="element text" size="2" maxlength="2" value="" type="text"> /
+                <label for="start_date_day">DD</label>
+            </span>
+            <span>
+                <input id="start_date_month" name="start_date_month" class="element text" size="2" maxlength="2" value="" type="text"> /
+                <label for="start_date_month">MM</label>
+            </span>
+            <span>
+                <input id="start_date_year" name="start_date_year" class="element text" size="4" maxlength="4" value="" type="text">
+                <label for="start_date_year">YYYY</label>
+            </span>
+
+            <span id="calendar_2">
+                <img id="cal_img_2" class="datepicker" src="{{ url_for('static', filename='form/calendar.gif') }}" alt="Pick a date.">
+            </span>
+            <script type="text/javascript">
+                Calendar.setup({
+                inputField	 : "start_date_year",
+                baseField    : "start_date",
+                displayArea  : "calendar_2",
+                button		 : "cal_img_2",
+                ifFormat	 : "%B %e, %Y",
+                onSelect	 : selectEuropeDate
+                });
+            </script>
+
+		</li>
+
+
+
+        <li id="li_3" >
+            <label class="description" for="end_date">End Date of Course</label>
+            <span>
+                <input id="end_date_day" name="end_date_day" class="element text" size="2" maxlength="2" value="" type="text"> /
+                <label for="end_date_day">DD</label>
+            </span>
+            <span>
+                <input id="end_date_month" name="end_date_month" class="element text" size="2" maxlength="2" value="" type="text"> /
+                <label for="end_date_month">MM</label>
+            </span>
+            <span>
+                <input id="end_date_year" name="end_date_year" class="element text" size="4" maxlength="4" value="" type="text">
+                <label for="end_date_year">YYYY</label>
+            </span>
+
+            <span id="calendar_3">
+                <img id="cal_img_3" class="datepicker" src="{{ url_for('static', filename='form/calendar.gif') }}" alt="Pick a date.">
+            </span>
+            <script type="text/javascript" >
+                Calendar.setup({
+                inputField	 : "end_date_year",
+                baseField    : "end_date",
+                displayArea  : "calendar_3",
+                button		 : "cal_img_3",
+                ifFormat	 : "%B %e, %Y",
+                onSelect	 : selectEuropeDate
+                });
+            </script>
+		 
+		</li>
+
+
+
+        <li id="li_7" >
+            <label class="description" for="duration">Course Duration</label>
+            <div>
+                <input id="duration" name="duration" class="element text small" type="text" maxlength="255" value=""/>
+            </div><p class="guidelines" id="guide_7"><small>The maximum duration of a course</small></p>
+		</li>
+
+
+
+        <li id="li_7" >
+            <label class="description" for="year">Study Year </label>
+            <div>
+                <input id="year" name="year" class="element text small" type="text" maxlength="255" value=""/>
+            </div><p class="guidelines" id="guide_8"><small>The scholar year of subjects</small></p>
+		</li>
+
+        <li class="buttons">
+            <input type="hidden" name="form_id" value="21717" />
+
+            <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>	
+		<div id="footer">
+			Elastic Search
+		</div>
+	</div>
+	</body>
+{% endblock %}
+{#</html>#}

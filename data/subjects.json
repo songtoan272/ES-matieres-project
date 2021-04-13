@@ -1,0 +1,51 @@
+{"name":"Anglais : préparation au TOEIC 1","professor":"Mme LAFAYE Emma","category":"Général","year":4,"coefficient":"2","duration":20,"start_date":"15-09-2020","end_date":null,"description":null}
+{"name":"Bi & big data","professor":"M. OVAL Michel","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":"20-09-2020","end_date":null,"description":null}
+{"name":"Communication professionnelle","professor":"M. POUYAT Olivier","category":"Métiers et Carrière","year":4,"coefficient":"2","duration":15,"start_date":"09-01-2020","end_date":null,"description":null}
+{"name":"Deep Learning","professor":"M. VIDAL Nicolas","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":"30-09-2020","end_date":null,"description":null}
+{"name":"Développement d'applications cloud native","professor":"M. BRIATTE Benoit","category":"Développment & Programmation","year":4,"coefficient":"2","duration":10,"start_date":null,"end_date":null,"description":null}
+{"name":"E-learning (foad) : langues & cultures d'entreprise","professor":"Mme PLATON Caroline","category":"Général","year":4,"coefficient":"1","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Environnement de développement, de test et de production : amazon web service","professor":"M. AROUS Ahmed","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Management de projet SI : CdC, risque et pilotage","professor":"M. TISSOT Philippe","category":"Métiers et Carrière","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Mathématiques Avancées pour Big Data avec R","professor":"M. BIANCHINI Marc","category":"Maths","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Programmation fonctionnelle avec scala","professor":"Mme THORNARY Clementine","category":"Développment & Programmation","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Programme open esgi & vie d'école","professor":"Mme PLATON Caroline","category":"Général","year":4,"coefficient":"3","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Spark core","professor":"M. BROUSSOLLE Adrien","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Cloud et big data","professor":"M. KIFFER Raphael","category":"A.I & Big Data","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Data marketing","professor":"M. LEVY Yann","category":"A.I & Big Data","year":4,"coefficient":"2","duration":15,"start_date":null,"end_date":null,"description":null}
+{"name":"Deep Reinforcement Learning","professor":"M. VIDAL Nicolas","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Elastic search et sagemaker","professor":"M. AROUS Ahmed","category":"Développment & Programmation","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Méthodologie agile : scrum","professor":"M. SOUPHRON Sébastien","category":"Métiers et Carrière","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Mission Entreprise","professor":"M. LEMOINE Daniel","category":"Métiers et Carrière","year":4,"coefficient":"N.C","duration":10,"start_date":null,"end_date":null,"description":null}
+{"name":"Programmation fonctionnelle avec scala","professor":"Mme THORNARY Clementine","category":"Développment & Programmation","year":4,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Programme open esgi & vie d'école","professor":"Mme PLATON Caroline","category":"Général","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Projet annuel","professor":"M. WAJNBERG Charles David","category":"Métiers et Carrière","year":4,"coefficient":"3","duration":40,"start_date":null,"end_date":null,"description":null}
+{"name":"Reporting et restitution","professor":"M. WAJNBERG Charles David","category":"A.I & Big Data","year":4,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Sécurité du big data","professor":"M. CHARBONNEL Damien","category":"A.I & Big Data","year":4,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Spark streaming","professor":"M. BROUSSOLLE Adrien","category":"A.I & Big Data","year":4,"coefficient":"4","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Algorithmique avancée : listes, tris et arbres","professor":"M. RAYNAL Benjamin","category":"Développment & Programmation","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Anglais professionnel","professor":"Mme NAAMANE Dulce","category":"Général","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"BDD et optimisation SQL","professor":"M. DELON Christophe","category":"A.I & Big Data","year":3,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Combinatoire et complexité","professor":"M. VIDAL Nicolas","category":"Développment & Programmation","year":3,"coefficient":"4","duration":40,"start_date":null,"end_date":null,"description":null}
+{"name":"Conception de base de données relationnelles","professor":"M. MOISAN Lucas","category":"A.I & Big Data","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"E-learning (foad) : langues & cultures d'entreprise","professor":"Mme PLATON Caroline","category":"Général","year":3,"coefficient":"1","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Langage C","professor":"M. BRIATTE Benoit","category":"Développment & Programmation","year":3,"coefficient":"4","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Langage Java avancé : POO, lambda, flux, FXML","professor":"M. SANANES Frédéric","category":"Développment & Programmation","year":3,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Mathématiques pour le Big Data","professor":"M. BIANCHINI Marc","category":"Maths","year":3,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Programme open esgi & vie d'école","professor":"Mme PLATON Caroline","category":"Général","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Réseaux CCNA1","professor":"M. DEBBAJ Khalil","category":"Développment & Programmation","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Algorithmique avancée : listes, tris et arbres","professor":"M. RAYNAL Benjamin","category":"Développment & Programmation","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Anglais professionnel","professor":"Mme NAAMANE Dulce","category":"Général","year":3,"coefficient":"1","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Ecosystème hadoop","professor":"M. CUSSAC Franck","category":"A.I & Big Data","year":3,"coefficient":"3","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"E-learning (foad) : langues & cultures d'entreprise","professor":"Mme PLATON Caroline","category":"Général","year":3,"coefficient":"1","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Framework machine learning","professor":"M. VIDAL Nicolas","category":"A.I & Big Data","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Introduction au machine learning","professor":"M. VIDAL Nicolas","category":"A.I & Big Data","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Langage Java avancé : POO, lambda, flux, FXML","professor":"M. SANANES Frédéric","category":"Développment & Programmation","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Langages de Scripting Shell et Python","professor":"M. RAYNAL Benjamin","category":"Développment & Programmation","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Linux administration avancée","professor":"M. JABER Alexandre","category":"Développment & Programmation","year":3,"coefficient":"1","duration":10,"start_date":null,"end_date":null,"description":null}
+{"name":"Mathématiques pour le Big Data","professor":"M. BIANCHINI Marc","category":"Maths","year":3,"coefficient":"2","duration":20,"start_date":null,"end_date":null,"description":null}
+{"name":"Mission Entreprise","professor":"M. LEMOINE Daniel","category":"Métiers et Carrière","year":3,"coefficient":"3","duration":10,"start_date":null,"end_date":null,"description":null}
+{"name":"Nosql et big data","professor":"M. TANDABANY Sattisvar","category":"A.I & Big Data","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Outils et pratiques du code : versioning, métriques, tests","professor":"M. WITTMANN Théodore","category":"Développment & Programmation","year":3,"coefficient":"1","duration":15,"start_date":null,"end_date":null,"description":null}
+{"name":"Panorama du big data (métiers et marchés)","professor":"M. TACHE Michael","category":"A.I & Big Data","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}
+{"name":"Programme open esgi & vie d'école","professor":"Mme PLATON Caroline","category":"Général","year":3,"coefficient":"2","duration":10,"start_date":null,"end_date":null,"description":null}
+{"name":"Projet Annuel","professor":"M. VIDAL Nicolas","category":"Métiers et Carrière","year":3,"coefficient":"2","duration":30,"start_date":null,"end_date":null,"description":null}

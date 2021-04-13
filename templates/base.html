@@ -1,0 +1,30 @@
+<html>
+    <head>
+      {% if title %}
+          <title>{{ title }} - Elastic Search</title>
+      {% else %}
+          <title>Welcome to Exemple!</title>
+      {% endif %}
+    </head>
+    <body>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form/view.css') }}" media="all">
+        <script type="text/javascript" src="{{ url_for('static', filename='form/view.js') }}"></script>
+        <div>
+            Elastic Search Project:
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('form') }}">Search</a>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
