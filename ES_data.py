@@ -93,8 +93,8 @@ class ES_Data:
                                 },
                                 "prof_name": {
                                     "properties": {
-                                        "first": {"type": "text"},
-                                        "last": {"type": "text"}
+                                        "first": {"type": "keyword"},
+                                        "last": {"type": "keyword"}
                                     }
                                 }
                             }
