@@ -21,7 +21,7 @@ def preprocessing_subject(dict_doc, num_id):
 
 def extract_search_input():
     #TODO: validate input values
-    input_criteria = ['keyword', 'cate_1', 'cate_2', 'cate_3',
+    input_criteria = ['keyword', 'cate_1', 'cate_2', 'cate_3', 'cate_4',
                       'coef_1', 'coef_2', 'coef_3', 'coef_4',
                       'start_date_day', 'start_date_month', 'start_date_year',
                       'end_date_day', 'end_date_month', 'end_date_year', 'duration',
@@ -40,13 +40,15 @@ def extract_search_input():
     #     search_values['category'] = 'Développement & Programmation'
 
     search_values['category'] = []
-    for cate in ['cate_1', 'cate_2', 'cate_3']:
+    for cate in ['cate_1', 'cate_2', 'cate_3', 'cate_4']:
         if inputs_dict[cate] == 'iabd':
             search_values['category'].append('A.I & Big Data')
         elif inputs_dict[cate] == 'maths':
             search_values['category'].append('Maths')
         elif inputs_dict[cate] == 'dev':
             search_values['category'].append('Développement & Programmation')
+        elif inputs_dict[cate] == 'general':
+            search_values['category'].append('Général')
     if len(search_values['category']) == 0:
         search_values.pop('category')
 
@@ -58,17 +60,17 @@ def extract_search_input():
     if len(search_values['coef']) == 0:
         search_values.pop('coef')
 
-    if (inputs_dict['start_date_day'] != "" and
-            inputs_dict['start_date_month'] != "" and
-            inputs_dict['start_date_year'] != ""):
+    if (inputs_dict['start_date_day'] and
+            inputs_dict['start_date_month'] and
+            inputs_dict['start_date_year']):
         search_values['start_date'] = '{}-{}-{}'.format(
             inputs_dict['start_date_day'],
             inputs_dict['start_date_month'],
             inputs_dict['start_date_year'])
 
-    if (inputs_dict['end_date_day'] != "" and
-            inputs_dict['end_date_month'] != "" and
-            inputs_dict['end_date_year'] != ""):
+    if (inputs_dict['end_date_day'] and
+            inputs_dict['end_date_month'] and
+            inputs_dict['end_date_year']):
         search_values['end_date'] = '{}-{}-{}'.format(
             inputs_dict['end_date_day'],
             inputs_dict['end_date_month'],
@@ -91,9 +93,6 @@ def make_query():
     es_query = {
         'query': {
             'bool': {
-                # 'must': {},
-                # 'must_not': {},
-                # 'should': {},
                 'filter': []
             }
         }

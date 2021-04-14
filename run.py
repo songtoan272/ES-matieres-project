@@ -33,9 +33,8 @@ def form():
 
 @app.route("/load", methods=['GET', 'POST'])
 def load():
-    result_data = es.search()
-    kw = request.form['keyword']
-    response = make_response(render_template("table.html", data=result_data))
+    nb_hits, result_data = es.search()
+    response = make_response(render_template("table.html", nb_hits=nb_hits, data=result_data))
     return response
 
 

@@ -124,14 +124,15 @@ class ES_Data:
 
     def search(self, index_name='subject'):
         es_query = make_query()
-        search_result = self.es.search(index=index_name, body=es_query)
-        print("Got %d Hits:" % search_result['hits']['total']['value'])
+        search_result = self.es.search(index=index_name, body=es_query, size=1000)
+
+        nb_hits = search_result['hits']['total']['value']
         es_result = search_result['hits']['hits']
 
-        result = "<br/>"
+        result = []
         for c in es_result:
-            result += str(c['_source']) + "<br/>"
-        return result
+            result.append(c['_source'])
+        return (nb_hits, result)
 
     def delete_index(self, index_name='subject'):
         self.es.indices.delete(index=index_name, ignore=[400, 404])

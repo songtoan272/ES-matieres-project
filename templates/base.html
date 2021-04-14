@@ -1,10 +1,13 @@
 <html>
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
       {% if title %}
           <title>{{ title }} - Elastic Search</title>
       {% else %}
-          <title>Welcome to Exemple!</title>
+          <title>Welcome to ElasticSearch Project!</title>
       {% endif %}
+        {% block header %}{% endblock %}
     </head>
     <body>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form/view.css') }}" media="all">
