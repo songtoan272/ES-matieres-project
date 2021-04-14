@@ -35,23 +35,26 @@
 
         <li id="li_5" >
             <label class="description" for="category">Category </label>
-            <div>
-                <p class="guidelines" id="guide_1">
+                            <p class="guidelines" id="guide_1">
                         <small>Category of subject</small></p>
-            <select class="element select medium" id="category" name="category">
-                <option value="" selected="selected"></option>
-                <option value="iabd" >A.I & Big Data</option>
-                <option value="maths" >Maths</option>
-                <option value="dev" >Development & Programmation</option>
 
-            </select>
-            </div>
+            <span>
+			<input id="cate_1" name="cate_1" class="element checkbox" type="checkbox" value="iabd" />
+            <label class="choice" for="cate_1">A.I & Big Data</label>
+            <input id="cate_2" name="cate_2" class="element checkbox" type="checkbox" value="maths" />
+            <label class="choice" for="cate_2">Maths</label>
+            <input id="cate_3" name="cate_3" class="element checkbox" type="checkbox" value="dev" />
+            <label class="choice" for="cate_3">Development & Programmation</label>
+
+		</span> 
 		</li>
 
 
 
         <li id="li_6" >
 		<label class="description" for="coef">Coefficient </label>
+        <p class="guidelines" id="guide_6">
+                    <small>The coefficient of subjects</small></p>
 		<span>
 			<input id="coef_1" name="coef_1" class="element checkbox" type="checkbox" value="1" />
             <label class="choice" for="coef_1">1</label>
@@ -144,10 +147,17 @@
 
         <li id="li_7" >
             <label class="description" for="year">Study Year </label>
-            <div>
-                <input id="year" name="year" class="element text small" type="text" maxlength="255" value=""/>
-            </div><p class="guidelines" id="guide_8"><small>The scholar year of subjects</small></p>
-		</li>
+        <div>
+        <span>
+			<input id="year_3" name="year_3" class="element checkbox" type="checkbox" value="3" />
+            <label class="choice" for="coef_1">3rd year</label>
+            <input id="year_4" name="year_4" class="element checkbox" type="checkbox" value="4" />
+            <label class="choice" for="coef_2">4th year</label>
+		</span> 
+
+                </select>
+        </div><p class="guidelines" id="guide_8"><small>The scholar year of subjects</small></p>
+        </li>
 
         <li class="buttons">
             <input type="hidden" name="form_id" value="21717" />

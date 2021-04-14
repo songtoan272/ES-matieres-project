@@ -1,5 +1,6 @@
 from elasticsearch import Elasticsearch, helpers, exceptions
-from transform_data import *
+from utils.preprocessor import *
+from utils.IOHandler import *
 
 
 class ES_Data:
@@ -49,13 +50,18 @@ class ES_Data:
                         "name": {
                             "type": "text",
                             "fields": {
-                                "raw": {
+                                "keyword": {
                                     "type": "keyword"
                                 }
                             }
                         },
                         "category": {
-                            "type": "keyword"
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
                         },
                         "duration": {
                             "type": "integer"
@@ -69,13 +75,7 @@ class ES_Data:
                             "format": "dd-MM-yyyy || dd/MM/yyyy"
                         },
                         "description": {
-                            "type": "text",
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword",
-                                    "ignore_above": 1000
-                                }
-                            }
+                            "type": "text"
                         },
                         "coefficient": {
                             "type": "byte"
@@ -84,17 +84,12 @@ class ES_Data:
                             "type": "object",
                             "properties": {
                                 "title": {
-                                    "type": "text",
-                                    "fields": {
-                                        "keyword": {
-                                            "type": "keyword"
-                                        }
-                                    }
+                                    "type": "keyword"
                                 },
                                 "prof_name": {
                                     "properties": {
-                                        "first": {"type": "keyword"},
-                                        "last": {"type": "keyword"}
+                                        "first": {"type": "text"},
+                                        "last": {"type": "text"}
                                     }
                                 }
                             }
@@ -128,28 +123,15 @@ class ES_Data:
         print("helpers.bulk() response: ", resp)
 
     def search(self, index_name='subject'):
-        # es_query = {
-        #
-        #     'query': {
-        #         "term": {
-        #             "host.keyword": {
-        #                 "value": "www.elastic.co"
-        #             }
-        #         }
-        #     },
-        #     'size': 10
-        # }
-        search_values = extract_search_input()
+        es_query = make_query()
+        search_result = self.es.search(index=index_name, body=es_query)
+        print("Got %d Hits:" % search_result['hits']['total']['value'])
+        es_result = search_result['hits']['hits']
 
-        print(search_values)
-        # res = self.es.search(index=index_name, body=search)
-        # print("Got %d Hits:" % res['hits']['total']['value'])
-        # es_result = res['hits']['hits']
-        #
-        # result = "<br/>"
-        # for c in es_result:
-        #     result += str(c['_source']) + "<br/>"
-        return search_values
+        result = "<br/>"
+        for c in es_result:
+            result += str(c['_source']) + "<br/>"
+        return result
 
     def delete_index(self, index_name='subject'):
         self.es.indices.delete(index=index_name, ignore=[400, 404])
