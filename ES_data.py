@@ -1,6 +1,8 @@
 from elasticsearch import Elasticsearch, helpers, exceptions
-from utils.preprocessor import *
+from elasticsearch_dsl import Search, A
+from utils.etl_search import *
 from utils.IOHandler import *
+from utils.preprocessor import *
 
 
 class ES_Data:
@@ -30,19 +32,19 @@ class ES_Data:
             settings = {
                 "settings": {
                     "number_of_shards": 1,
-                    "number_of_replicas": 0,
-                    "analysis": {
-                        "analyzer": {
-                            "default": {
-                                "type": "french"
-                            }
-                        },
-                        "search_analyzer": {
-                            "default": {
-                                "type": "standard"
-                            }
-                        }
-                    }
+                    "number_of_replicas": 0
+                    # "analysis": {
+                    #     "analyzer": {
+                    #         "default": {
+                    #             "type": "standard"
+                    #         }
+                    #     },
+                    #     "search_analyzer": {
+                    #         "default": {
+                    #             "type": "standard"
+                    #         }
+                    #     }
+                    # }
                 },
                 "mappings": {
                     "dynamic": "strict",
@@ -88,8 +90,30 @@ class ES_Data:
                                 },
                                 "prof_name": {
                                     "properties": {
-                                        "first": {"type": "text"},
-                                        "last": {"type": "text"}
+                                        "first": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "last": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "fullname": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            },
+                                        },
                                     }
                                 }
                             }
@@ -123,8 +147,8 @@ class ES_Data:
         print("helpers.bulk() response: ", resp)
 
     def search(self, index_name='subject'):
-        es_query = make_query()
-        search_result = self.es.search(index=index_name, body=es_query, size=1000)
+        es_query, sort = make_query()
+        search_result = self.es.search(index=index_name, body=es_query, size=1000, sort=sort)
 
         nb_hits = search_result['hits']['total']['value']
         es_result = search_result['hits']['hits']
@@ -132,7 +156,59 @@ class ES_Data:
         result = []
         for c in es_result:
             result.append(c['_source'])
+        print(result)
         return (nb_hits, result)
+
+    def aggregation(self, index_name='subject'):
+        agg_query = make_agg_query()
+        if agg_query:
+            res = self.es.search(index=index_name, body=agg_query, size=1000)
+            print(json.dumps(res))
+            return res
+        else:
+            return None
+
+    def aggregation_dsl(self, index_name='subject'):
+        bucket_field = request.form.get('bucket_field')
+        metric_field = request.form.get('metric_field')
+        metric_agg = request.form.get('metric_agg')
+
+        if bucket_field:
+            s = Search(using=self.es, index=index_name)
+            if bucket_field in ["professor.prof_name.fullname.keyword",
+                                'category.keyword', 'year', 'coefficient']:
+                s.aggs.bucket('main_agg', 'terms', field=bucket_field)
+            elif bucket_field == 'duration':
+                s.aggs.bucket('main_agg', 'ranges', field=bucket_field,
+                              ranges=[
+                                  {'to': 10},
+                                  {'from': 10, 'to': 15},
+                                  {'from': 15, 'to': 20},
+                                  {'from': 20}
+                              ])
+
+            elif bucket_field in ['start_date', 'end_date']:
+                s.aggs.bucket('main_agg', 'date_histogram', field=bucket_field,
+                              interval='month', format='yyyy-mm')
+            if metric_field:
+                if metric_field == 'doc':
+                    s.aggs['main_agg'].metric('sub_agg', 'value_count',
+                                                field='name.keyword')
+                elif metric_field in ['duration', 'start_date', 'end_date']:
+                    s.aggs['main_agg'].metric('sub_agg', str.lower(metric_agg),
+                                                field=metric_field)
+            res = s.execute()
+            return s.to_dict(), translate_agg_result(res, True)
+
+        elif metric_field:
+            s = Search(using=self.es, index=index_name)
+            if metric_field == 'doc':
+                s.aggs.metric('main_agg', 'value_count', field='name.keyword')
+            elif metric_field in ['duration', 'start_date', 'end_date']:
+                s.aggs.metric('main_agg', str.lower(metric_agg), field=metric_field)
+            res = s.execute()
+            return s.to_dict(), translate_agg_result(res, False)
+        return None, None
 
     def delete_index(self, index_name='subject'):
         self.es.indices.delete(index=index_name, ignore=[400, 404])

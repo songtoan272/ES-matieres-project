@@ -12,8 +12,7 @@ es = ES_Data()
 @app.route("/")
 @app.route("/index")
 def index():
-    user = {'username': 'Toan'}
-    return render_template("index.html", title='Index', user=user)
+    return render_template("index.html", title='Index')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -28,15 +27,32 @@ def login():
 
 @app.route('/form', methods=['GET', 'POST'])
 def form():
-    return render_template('form.html', title='Search Form')
+    return render_template('search_form.html', title='Search Form')
 
 
-@app.route("/load", methods=['GET', 'POST'])
-def load():
+@app.route("/search", methods=['GET', 'POST'])
+def search():
     nb_hits, result_data = es.search()
     response = make_response(render_template("table.html", nb_hits=nb_hits, data=result_data))
     return response
 
+
+@app.route("/search1", methods=['POST'])
+def search1():
+    return es.search()
+
+
+@app.route("/aggs", methods=['GET', 'POST'])
+def aggs():
+    query, res = es.aggregation_dsl()
+    if query and res:
+        print(res)
+        return render_template("agg_form.html", data=res, query=query)
+    return render_template("agg_form.html")
+
+# @app.route("/agg_res", methods=['POST'])
+# def agg_res():
+#     pass
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@
 
 	<img id="top" src="{{ url_for('static', filename='form/top.png') }}" alt="">
 	<div id="form_container">
-		<form id="form_21717" class="appnitro"  method="post" action="{{ url_for('load') }}">
+		<form id="form_21717" class="appnitro"  method="post" action="{{ url_for('search') }}">
         <div class="form_description">
             <h2>Search Form</h2>
 			<p>This is your search form using Elastic Search. Please fill in the desired parameters.</p>
@@ -35,7 +35,7 @@
 
         <li id="li_5" >
             <label class="description" for="category">Category </label>
-                            <p class="guidelines" id="guide_1">
+                            <p class="guidelines" id="guide_5">
                         <small>Category of subject</small></p>
 
             <span>
@@ -74,6 +74,8 @@
 
         <li id="li_2" >
             <label class="description" for="start_date">Start Date of Course</label>
+            <p class="guidelines" id="guide_2">
+                    <small>The earliest start date of courses</small></p>
             <span>
                 <input id="start_date_day" name="start_date_day" class="element text" size="2" maxlength="2" value="" type="text"> /
                 <label for="start_date_day">DD</label>
@@ -107,6 +109,8 @@
 
         <li id="li_3" >
             <label class="description" for="end_date">End Date of Course</label>
+            <p class="guidelines" id="guide_3">
+                    <small>The latest end date of courses</small></p>
             <span>
                 <input id="end_date_day" name="end_date_day" class="element text" size="2" maxlength="2" value="" type="text"> /
                 <label for="end_date_day">DD</label>
@@ -147,7 +151,7 @@
 
 
 
-        <li id="li_7" >
+        <li id="li_8" >
             <label class="description" for="year">Study Year </label>
         <div>
         <span>
@@ -161,10 +165,41 @@
         </div><p class="guidelines" id="guide_8"><small>The scholar year of subjects</small></p>
         </li>
 
+
+
+        <li id="li_9" >
+		<label class="description">Sort By </label>
+            <p class="guidelines" id="9"><small>Choose how to sort the search result</small></p>
+		<span>
+            <div>
+            <select class="element select large" id="sort_field" name="sort_field" >
+            <option value="name.keyword" selected="selected">Name</option>
+            <option value="category.keyword" >Category</option>
+            <option value="professor" >Professor Name</option>
+            <option value="coefficient" >Coefficient</option>
+            <option value="year" >Scholar Year</option>
+            <option value="start_date" >Course Start Date</option>
+            <option value="end_date" >Course End Date</option>
+            <option value="duration" >Course Duration</option>
+		    </select>
+                <label>Field</label>
+		</div>
+		</span>
+		<span>
+            <div>
+            <select class="element select large" id="sort_order" name="sort_order" >
+            <option value="asc" selected="selected">ASC</option>
+            <option value="desc" >DESC</option>
+		    </select>
+                <label>Order</label>
+		    </div>
+		</span>
+		</li>
+
         <li class="buttons">
             <input type="hidden" name="form_id" value="21717" />
 
-            <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+            <input id="submit" class="button_text" type="submit" name="submit" value="Submit" />
 		</li>
 			</ul>
 		</form>	

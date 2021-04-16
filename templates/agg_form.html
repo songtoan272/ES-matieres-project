@@ -1,0 +1,98 @@
+{#<html>#}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aggregation Form </title>
+
+</head>
+{% extends "base.html" %}
+{% block content %}
+<body id="main_body" >
+
+    <script type="text/javascript" src="{{ url_for('static', filename='form/aggs_filter.js') }}"></script>
+	<img id="top" src="{{ url_for('static', filename='form/top.png') }}" alt="">
+	<div id="form_container">
+
+		<form id="form_21717" class="appnitro"  method="post" action="{{ url_for('aggs') }}">
+        <div class="form_description">
+            <h2>Aggregation Form </h2>
+			<p>Provide some type of aggregations on data of subjects</p>
+		</div>
+			<ul >
+
+                <li id="li_9" >
+		<label class="description" >Buckets Aggregations </label>
+		<span>
+			<div>
+            <select class="element select large" id="bucket_field" name="bucket_field">
+            <option value="" selected="selected"></option>
+            <option value="professor.prof_name.fullname.keyword">Professor</option>
+            <option value="category.keyword">Category</option>
+            <option value="year">Year</option>
+            <option value="coefficient">Coefficient</option>
+            <option value="duration" >Duration</option>
+            <option value="start_date" >Start Date of Course</option>
+            <option value="end_date" >End Date of Course</option>
+		    </select>
+			    <label>Field</label>
+		    </div>
+		</span>
+				<p class="guidelines" id="guide_9"><small>Choose the field to perform bucket/group by aggregation on</small></p>
+		</li>
+
+
+					<li id="li_8" >
+		<label class="description">Metrics Aggregations </label>
+		<span>
+            <div>
+            <select class="element select large" id="metric_field" name="metric_field"
+					onchange="parentList_OnChange(this)">
+            <option value="" selected="selected"></option>
+            <option value="doc">Doc</option>
+            <option value="duration" >Duration</option>
+            <option value="start_date" >Start Date of Course</option>
+            <option value="end_date" >End Date of Course</option>
+		    </select>
+			    <label>Field</label>
+		    </div>
+		</span>
+		<span>
+			<select class="element select large" id="metric_agg" name="metric_agg"></select>
+			<label>Agg</label>
+		</span><p class="guidelines" id="guide_8"><small>Choose the metric aggregation and the field to calculate on</small></p>
+		</li>
+
+
+
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="21717" />
+
+				<input id="submit" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>
+
+{#        <table class="table">#}
+{#          <thead>#}
+{#            <tr>#}
+{#              <th>Country</th>#}
+{#              <th>Region</th>#}
+{#              <th>description</th>#}
+{#            </tr>#}
+{#          </thead>#}
+{#            <tbody id="result"></tbody>#}
+{#        </table>#}
+
+
+		<div>
+			{% if data %}
+				{{data}}
+			{% endif %}
+		</div>
+
+		<div id="footer">
+			Elastic Search
+		</div>
+	</div>
+	</body>
+{% endblock %}
+{#</html>#}
